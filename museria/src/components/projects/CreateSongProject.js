@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import logInCover from '../../images/loginCover.svg'
+import {createNewPost} from '../../actions/projectActions';
+import { connect } from 'react-redux';
 
 class CreateSongProject extends Component {
     state={
@@ -14,7 +16,8 @@ class CreateSongProject extends Component {
     }
     handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
+        this.props.createProject(this.state);
     }
     
     render() {
@@ -49,4 +52,10 @@ class CreateSongProject extends Component {
     }
 }
 
-export default CreateSongProject;
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        createProject: (project)=>dispatch(createNewPost(project))
+    }
+}
+
+export default connect(null,mapDispatchToProps)(CreateSongProject);
