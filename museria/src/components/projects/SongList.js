@@ -1,15 +1,14 @@
 import React from 'react';
 import SongSummary from './SongSummary';
 
-const SongList = () =>{
+const SongList = ({project}) =>{
     return(
         <div className="songList section">
-
-            <SongSummary />
-            <SongSummary />
-            <SongSummary />
-            <SongSummary />
-
+            {project && project.map(projectItem =>{
+                return(
+                    <SongSummary projectItem = {projectItem} />
+                )
+            })}
         </div>
     )
 }
