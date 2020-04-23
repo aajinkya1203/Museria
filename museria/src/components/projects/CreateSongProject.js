@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import logInCover from '../../images/loginCover.svg'
 import {createNewPost} from '../../actions/projectActions';
 import { connect } from 'react-redux';
+import { withFirebase } from 'react-redux-firebase';
+
 
 class CreateSongProject extends Component {
     state={
@@ -16,14 +18,13 @@ class CreateSongProject extends Component {
     }
     handleSubmit = (e)=>{
         e.preventDefault();
-        //console.log(this.state);
-        this.props.createProject(this.state);
+        this.props.createProject(this.state,this.props.firebase);
     }
     
     render() {
         return (
             <div className="container">
-                <img src={logInCover} className="signInFace"/>
+                <img src={logInCover} className="signInFace" alt="Cover for Song Project"/>
                 <form onSubmit={this.handleSubmit} className="" id="signInForm">
 
                 <h4 className="grey-text text-darken-3">New Post</h4>
@@ -54,8 +55,8 @@ class CreateSongProject extends Component {
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        createProject: (project)=>dispatch(createNewPost(project))
+        createProject: (project,fb)=>dispatch(createNewPost(project,fb))
     }
 }
 
-export default connect(null,mapDispatchToProps)(CreateSongProject);
+export default withFirebase(connect(null,mapDispatchToProps)(CreateSongProject));

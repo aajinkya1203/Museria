@@ -104,3 +104,7 @@ code {
 .song-summary p{
   color: #4e5047;
 }
+
+.loading{
+  background-color: #00aeef;
+}

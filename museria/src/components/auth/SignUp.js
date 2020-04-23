@@ -21,7 +21,7 @@ class SignUp extends Component {
     render() {
         return (
             <div className="container">
-                <img src={logInCover} className="signInFace"/>
+                <img src={logInCover} className="signInFace" alt="Cover for Signup"/>
                 <form onSubmit={this.handleSubmit} className="" id="signInForm">
 
                 <h4 className="grey-text text-darken-3">Sign Up</h4>
