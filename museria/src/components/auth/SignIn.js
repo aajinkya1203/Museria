@@ -3,6 +3,7 @@ import logInCover from '../../images/loginCover.svg';
 import { withFirebase } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import signIN from '../../actions/authActions'
+import { Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
     state={
@@ -20,7 +21,8 @@ class SignIn extends Component {
     }
     
     render() {
-        const { authError } = this.props;
+        const { authError, auth } = this.props;
+        if(auth.uid) return <Redirect to='/' />
         return (
             <div className="container">
                 <img src={logInCover} className="signInFace" alt="Cover for Signin"/>
@@ -58,7 +60,8 @@ class SignIn extends Component {
 
 const mapStateToProps = (state)=>{
     return{
-        authError: state.auth.authError
+        authError: state.auth.authError,
+        auth:state.firebase.auth
     }
 }
 

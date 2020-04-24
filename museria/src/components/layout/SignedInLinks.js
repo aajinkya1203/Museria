@@ -9,7 +9,9 @@ const SignedInLinks = (props) =>{
         <ul className="right">
             <li><NavLink to='/create'>New Post</NavLink></li>
             <li><a onClick={()=>{props.signOUT(props.firebase)}}>Log Out</a></li>
-            <li><NavLink to='/' className="btn btn-floating btn-large white profile">AA</NavLink></li>
+            <li><NavLink to='/' className="btn btn-floating btn-large white profile">
+                {props.profile.initials}
+            </NavLink></li>
         </ul>
     )
 }

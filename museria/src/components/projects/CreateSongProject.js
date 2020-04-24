@@ -3,7 +3,7 @@ import logInCover from '../../images/loginCover.svg'
 import {createNewPost} from '../../actions/projectActions';
 import { connect } from 'react-redux';
 import { withFirebase } from 'react-redux-firebase';
-
+import { Redirect } from 'react-router-dom';
 
 class CreateSongProject extends Component {
     state={
@@ -19,9 +19,12 @@ class CreateSongProject extends Component {
     handleSubmit = (e)=>{
         e.preventDefault();
         this.props.createProject(this.state,this.props.firebase);
+        this.props.history.push('/');
     }
     
     render() {
+        const { auth } = this.props;
+        if(!auth.uid) return <Redirect to='/signin' />
         return (
             <div className="container">
                 <img src={logInCover} className="signInFace" alt="Cover for Song Project"/>
@@ -52,6 +55,11 @@ class CreateSongProject extends Component {
         )
     }
 }
+const mapStateToProps = (state) =>{
+    return{
+        auth: state.firebase.auth
+    }
+}
 
 const mapDispatchToProps = (dispatch) =>{
     return{
@@ -59,4 +67,4 @@ const mapDispatchToProps = (dispatch) =>{
     }
 }
 
-export default withFirebase(connect(null,mapDispatchToProps)(CreateSongProject));
+export default withFirebase(connect(mapStateToProps,mapDispatchToProps)(CreateSongProject));

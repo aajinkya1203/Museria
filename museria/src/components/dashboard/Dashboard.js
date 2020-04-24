@@ -5,11 +5,13 @@ import abstractBG from '../../images/abstractBG.svg';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component{
     render(){
         // console.log(this.props)
-        const { project } = this.props;
+        const { project, auth, notifications } = this.props;
+        if(!auth.uid) return <Redirect to='/signin' />
         return(
             <div className="dashboard container">
                 <img src={ abstractBG } className="mainBG" alt="Cover for Dashboard"/>
@@ -18,7 +20,7 @@ class Dashboard extends Component{
                         <SongList project = { project }/>
                     </div>
                     <div className="col s12 m5 offset-m1 notifs">
-                        <Notifications />
+                        <Notifications notifications={ notifications }/>
                     </div>
                 </div>
             </div>
@@ -27,15 +29,18 @@ class Dashboard extends Component{
 }
 
 const mapStatetoProps=(state)=>{
-    console.log(state);
+    // console.log(state);
     return{
-        project: state.firestore.ordered.projects
+        project: state.firestore.ordered.projects,
+        auth: state.firebase.auth,
+        notifications: state.firestore.ordered.notifications
     }
 }
 
 export default compose(
     connect(mapStatetoProps),
     firestoreConnect([
-        {collection:'projects'}
+        {collection:'projects'},
+        {collection:'notifications', limit: 5}
     ])
 )(Dashboard);

@@ -1,13 +1,15 @@
 import React from 'react';
+import moment from 'moment';
 
 const SongSummary = ({projectItem}) =>{
+    // console.log(projectItem);
     return(
         <div className="card z-depth-0 song-summary">
             <div className="card-content text-darken-3">
                 <span className="card-title song-summary-title">{ projectItem.title }</span>
                 <h6 className="artists">{ projectItem.artist }</h6>
-                <p>Posted by Aajinkya Singh</p>
-                <p className="">21st April - 4:44 PM</p>
+                <p>Posted by {projectItem.authorFirstName} {projectItem.authorLastName}</p>
+                <p className="">{ moment(projectItem.createdAt.toDate()).calendar() }</p>
             </div>
         </div>
     )
