@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  height: 100%;
 }
 
 code {
@@ -91,10 +92,21 @@ code {
 }
 
 .song-summary{
-  border-radius: 24px;
-  background-color: #c1cbb0;
-  color: #22241b !important;
+  border-radius: 18px 18px 0 0;
+  background-color: #ffcf99;
+  color: #000 !important;
+  position: relative;
+  /* overflow: hidden; */
+  background-image: url(./images/summaryBG.png);
+  background-size: 100% auto;
+
 }
+/* .summary-bg{
+  position: absolute;
+  opacity: 0.6;
+  z-index: -5;
+  top: 100px;
+} */
 
 .song-summary-title{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -106,5 +118,7 @@ code {
 }
 
 .loading{
-  background-color: #00aeef;
+  background-color: #f2276c;
+  height: 100%;
+  padding: 12px 0;
 }

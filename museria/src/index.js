@@ -12,7 +12,8 @@ import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase';
 import firebase from 'firebase/app';
 import fbConfig from './config/fbConfig';  //this is the config file in which firebase connection details are present
                                           // along with firebase.initializeApp() and firebase.firestore() commands
-import OctopusLoading from './images/Loading.gif';
+import CoffeeLoading from './images/LoadingRe.gif';
+// import OctopusLoading from './images/Loading.gif';
 
 
 const rrfConfig ={
@@ -50,7 +51,7 @@ const store = createStore(rootReducers,
       return children;
     }
     else{
-      return <div className="center loading"> <img src= { OctopusLoading } alt="Loading... " /></div>
+      return <div className="center loading"><img src= { CoffeeLoading } alt="Loading... " /></div>
     }
   }
 

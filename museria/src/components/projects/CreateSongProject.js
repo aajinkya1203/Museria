@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import logInCover from '../../images/loginCover.svg'
+import createBG from '../../images/createBG.svg'
 import {createNewPost} from '../../actions/projectActions';
 import { connect } from 'react-redux';
 import { withFirebase } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
+
 
 class CreateSongProject extends Component {
     state={
@@ -27,7 +28,7 @@ class CreateSongProject extends Component {
         if(!auth.uid) return <Redirect to='/signin' />
         return (
             <div className="container">
-                <img src={logInCover} className="signInFace" alt="Cover for Song Project"/>
+                <img src={createBG} className="signInFace" alt="Cover for Song Project"/>
                 <form onSubmit={this.handleSubmit} className="" id="signInForm">
 
                 <h4 className="grey-text text-darken-3">New Post</h4>

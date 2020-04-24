@@ -4,14 +4,16 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import abstractBG from '../../images/abstractBG.svg';
+
 
 const SongDetail =(props)=>{
-    const id = props.match.params.id;
     const { project,auth } = props;
     if(!auth.uid) return <Redirect to='/signin' />
     if (project){    
         return(
             <div className="container section songDetail">
+                <img src={ abstractBG } className="mainBG" alt="Cover for Dashboard"/>
                 <div className="card z-depth-0">
                     <div className="card-content">
                         <span className="card-title">{ project.title }</span>
