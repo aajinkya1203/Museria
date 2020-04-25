@@ -22,7 +22,7 @@ _Referenced from [create-react-app repo](https://github.com/facebook/create-reac
 
 ## Contributions 
 
-This solo project allows users to share their favourite musics so music-lovers can find some of the best of the musics out there while at the same time share their favourite!
+This solo project allows users to share their favourite musics so music-lovers can find some of the best of the musics out there while at the same time share their favourite ones!
 
 Check out the [Contributions](https://github.com/aajinkya1203/Museria/graphs/contributors) for the repo here!
 
